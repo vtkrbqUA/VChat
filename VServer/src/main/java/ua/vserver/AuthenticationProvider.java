@@ -11,8 +11,6 @@ public interface AuthenticationProvider {
 
     void addUserToDB(String login, String password, String nickname);
 
-    void removeUserFromDB(String login);
-
     void changeNickname(String oldNickname, String newNickname);
 
     void shutdown();

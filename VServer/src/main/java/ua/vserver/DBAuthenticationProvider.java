@@ -97,18 +97,6 @@ public class DBAuthenticationProvider implements AuthenticationProvider {
     }
 
     @Override
-    public synchronized void removeUserFromDB(String login) {
-        try {
-            dbSource.setPreparedStatement("delete from users where login = ?;");
-            dbSource.getPreparedStatement().setString(1, login);
-            dbSource.getPreparedStatement().executeUpdate();
-        } catch (SQLException e) {
-            log.throwing(Level.ERROR, e);
-            throw new RuntimeException("Can't connect to DB");
-        }
-    }
-
-    @Override
     public synchronized void changeNickname(String oldNickname, String newNickname) {
         try {
             dbSource.setPreparedStatement("update users set nickname = (?) where nickname = (?);");
